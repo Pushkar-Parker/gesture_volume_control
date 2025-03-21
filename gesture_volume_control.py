@@ -115,18 +115,19 @@ def main(images_path: str,
             pTime = cTime
 
             cv2.putText(img, fps, (5, 20), cv2.FONT_HERSHEY_PLAIN, 1, (255, 0, 255), 2) # putting FPS on image
-            
+
+            # saving the images
             handler.save_images(save_path = path, 
                                 img= img, 
                                 counter = count) # saving images
             
-            cv2.imshow('feed', img)
+            cv2.imshow('feed', img) # running the feed
 
-            count += 1
+            count += 1 # incrementing the count
 
         k = cv2.waitKey(1)
         if k == ord('q'):
-            
+            # generating video through images
             handler.img_to_video(images_path=path, 
                                 video_save_path=video_save_path, 
                                 file_name=video_name)
@@ -146,7 +147,7 @@ def main(images_path: str,
             run = False
 
 # executiong the function
-main(images_path=r'D:\software\mediapipe\target', 
-     video_save_path=r'D:\software\mediapipe\target\video', 
-     video_name='volume_ctrl', 
-     del_images_after=True)
+main(images_path= 'images_save_path', # save path for images
+     video_save_path= 'video_path', # save path for video
+     video_name='volume_ctrl', # video_name
+     del_images_after=True) # if the user want to delete the images used for video generation afterwards
